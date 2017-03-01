@@ -1,4 +1,4 @@
-.env
+#.env # uncomment for production
 node_modules/
 npm-debug*
 .DS_Store
