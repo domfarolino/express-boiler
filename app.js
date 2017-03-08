@@ -37,9 +37,9 @@ app.get('*', (request, response, next) => {
 const apiV1 = require('./lib/controllers/api');
 app.use('/api', apiV1);
 
-app.get('/', (request, response) => {
-  response.status(200).send('Wooo');
-});
+// app.get('/', (request, response) => {
+//   response.status(200).send('Wooo');
+// });
 
 /**
  * Static
