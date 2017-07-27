@@ -47,8 +47,8 @@ app.use('/api', apiV1);
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-require('http').createServer(app).listen(8080, function() {
-  console.log(`Running: ${process.env.SECRET_VAR}`);
+require('http').createServer(app).listen(process.env.PORT, function() {
+  console.log(`Serving on: ${process.env.PORT}`);
 });
 
 /**
