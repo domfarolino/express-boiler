@@ -31,32 +31,33 @@ app.get('*', (request, response, next) => {
 });
 
 /**
- * API setup + basic handler
+ * API setup + handler
  */
-
 const apiV1 = require('./lib/controllers/api');
 app.use('/api', apiV1);
 
-// app.get('/', (request, response) => {
-//   response.status(200).send('Wooo');
-// });
-
 /**
- * Static
+ * Special file handlers should go here
  */
 
+/**
+ * Setup `public/` as static folder
+ */
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+/**
+ * Run server
+ */
 require('http').createServer(app).listen(process.env.PORT, function() {
   console.log(`Serving on: ${process.env.PORT}`);
 });
 
+///////////////////////////////////////////////////////////////////////
+
 /**
  * Error handling
  */
-
-// development error handler
-// will print stacktrace
+// development error handler prints stacktrace
 if (app.get('env') === 'development') {
   app.use(function (err, request, response, next) {
     response.status(err.status || 500);
@@ -67,8 +68,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+// production error handler does not leak stacktrace to user
 app.use(function (err, request, response, next) {
   response.status(err.status || 500);
   response.json({
